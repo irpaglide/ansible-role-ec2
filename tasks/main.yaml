@@ -1,5 +1,7 @@
 ---
 #### CREATE
+- debug: msg="{{ec2_region}}"
+
 - ec2:
     instance_profile_name: "{{ec2_instance_profile_name}}"
     key_name: "{{ec2_key}}"
@@ -15,7 +17,6 @@
     vpc_subnet_id: "{{ec2_subnet}}"
   register: ec2_instance
 
-- debug: msg="{{ec2_region}}"
 
 - name: Wait for SSH to come up
   local_action: wait_for
