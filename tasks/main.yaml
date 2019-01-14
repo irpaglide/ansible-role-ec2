@@ -1,5 +1,6 @@
 ---
 #### CREATE
+- debug: msg="!!!!!!!!!!!{{config_region.name}}"
 - debug: msg="{{instance_region}}"
 
 - ec2:
