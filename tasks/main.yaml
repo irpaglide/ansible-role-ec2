@@ -1,13 +1,13 @@
 ---
 #### CREATE
-- debug: msg="{{ec2_region}}"
+- debug: msg="{{instance_region}}"
 
 - ec2:
     instance_profile_name: "{{ec2_instance_profile_name}}"
     key_name: "{{ec2_key}}"
     group: "{{ec2_security_groups}}"
     instance_type: "{{ec2_instance_type}}"
-    region: "{{ec2_region}}"
+    region: "{{instance_region}}"
     image: "{{ec2_ami}}"
     wait: "{{ec2_wait}}"
     exact_count: "{{ec2_count}}"
