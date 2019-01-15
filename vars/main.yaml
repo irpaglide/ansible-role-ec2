@@ -6,3 +6,4 @@ ec2_wait_timeout: 60
 ec2_ssh_port: 22
 instance_region: "us-east-1"
 ec2_count: 1
+ec2_state: started
