@@ -13,7 +13,6 @@
     wait_timeout: "{{ec2_wait_timeout}}"
     instance_tags: "{{ec2_tags}}"
     vpc_subnet_id: "{{ec2_subnet}}"
-    state: "{{ec2_state}}"
   register: ec2_instance
 
 
@@ -23,4 +22,3 @@
                 port="{{ec2_ssh_port}}"
                 state=started
   with_items: "{{ec2_instance.tagged_instances}}"
-  when: ec2_state == "started"
