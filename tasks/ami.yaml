@@ -1,0 +1,33 @@
+---
+- ec2_instance_facts:
+    filters: "{{ec2_source_tags}}"
+  register: "instances"
+
+- set_fact:
+    instance_id: "{{instances.instances[0].instance_id}}"
+
+- set_fact:
+    tag: "{{branch}}"
+  when: tag is undefined
+
+- name: "Get all {{env}} AMIs"
+  ec2_ami_facts:
+    filters:
+      {{ami_previous_tag}}
+  register: "ami"
+
+- name: "Re tag old AMIs"
+  ec2_tag:
+    region: "us-east-2"
+    resource: "{{item.image_id}}"
+    state: present
+    tags:
+      latest: "false"
+  with_items: "{{ami.images}}"
+
+- ec2_ami:
+    instance_id: "{{instance_id}}"
+    no_reboot: yes
+    wait: yes
+    name: "{{ami_tags.Name}}"
+    tags: "{{ami_tags}}"
