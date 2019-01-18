@@ -1,8 +1,4 @@
 ---
-- set_fact:
-    tag: "{{branch}}"
-  when: tag is undefined
-
 - name: "Re tag old AMIs"
   ec2_tag:
     region: "us-east-2"
