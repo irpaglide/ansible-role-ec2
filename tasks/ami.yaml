@@ -1,6 +1,6 @@
 ---
 - ec2_instance_facts:
-    filters: "{{ec2_source_tags|from_json|dict}}"
+    filters: "{{ec2_source_tags|from_json|map}}"
   register: "instances"
 
 - set_fact:
@@ -12,7 +12,7 @@
 
 - name: "Get all {{env}} AMIs"
   ec2_ami_facts:
-    filters: "{{ami_previous_tag|from_json|dict}}"
+    filters: "{{ami_previous_tag|from_json|map}}"
   register: "ami"
 
 - name: "Re tag old AMIs"
