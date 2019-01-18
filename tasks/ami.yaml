@@ -12,5 +12,5 @@
     instance_id: "{{instance_id}}"
     no_reboot: yes
     wait: yes
-    name: "{{ami_tags.Name}}"
+    name: "{{ami_tags.Name}}-{{ lookup('pipe', 'date +%Y%m%d%H%M%S')}}"
     tags: "{{ami_tags}}"
