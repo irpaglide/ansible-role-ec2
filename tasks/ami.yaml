@@ -12,7 +12,7 @@
 
 - name: "Get all {{env}} AMIs"
   ec2_ami_facts:
-    filters: {{ami_previous_tag|from_json}}
+    filters: "{{ami_previous_tag|from_json}}"
   register: "ami"
 
 - name: "Re tag old AMIs"
