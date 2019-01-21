@@ -9,7 +9,8 @@
   with_items: "{{ami.images}}"
   when: ami.images|length > 0
 
-- ec2_ami:
+- name: "Create AMI with new version"
+  ec2_ami:
     instance_id: "{{instance_id}}"
     no_reboot: yes
     wait: yes
