@@ -1,7 +1,7 @@
 ---
 - name: "Re tag old AMIs"
   ec2_tag:
-    region: "us-east-2"
+    region: "{{ec2_region}}"
     resource: "{{item.image_id}}"
     state: present
     tags:
