@@ -3,4 +3,4 @@
   ec2:
     state: 'absent'
     instance_ids: '{{ item.instance_id }}'
-  with_items: "{{ec2_instances}}"
+  with_items: "{{ec2_instances.instances}}"
