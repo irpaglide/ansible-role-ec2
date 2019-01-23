@@ -1,5 +1,5 @@
 ---
-- name: Terminate instances that were previously launched
+- name: Terminate instances
   ec2:
     state: 'absent'
     region: "{{ec2_region}}"
