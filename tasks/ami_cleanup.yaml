@@ -1,6 +1,10 @@
+- set_fact:
+    keep_amis: "{{amis[:keep_last]}}"
+
 - name: "Delete old AMIs"
   ec2_ami:
     image_id: "{{item.image_id}}"
     delete_snapshot: yes
     state: absent
   with_items: amis
+  when: item not in keep_amis
