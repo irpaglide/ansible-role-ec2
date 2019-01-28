@@ -1,7 +1,7 @@
 - debug:
     var: item.creation_date
-  with_items: "{{ami}}"
-  
+  with_items: "{{amis}}"
+
 - set_fact:
     keep_amis: "{{amis[:keep_last]}}"
 
