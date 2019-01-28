@@ -2,6 +2,7 @@
     var: item
   with_items: "{{amis}}"
   when: amis|length > 0
+
 - set_fact:
     keep_amis: "{{amis[:keep_last]}}"
 
