@@ -1,5 +1,5 @@
 - debug:
-    var: item.creation_date
+    var: item
   with_items: "{{amis}}"
   when: amis|length > 0
 - set_fact:
