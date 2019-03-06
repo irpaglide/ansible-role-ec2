@@ -9,6 +9,16 @@
   with_items: "{{ami.images}}"
   when: ami.images|length > 0
 
+- name: Stop instance before baking AMI
+  ec2:
+    state: 'stopped'
+    region: "{{ec2_region}}"
+    instance_ids: "{{instance_id}}"
+
+- name: sleep for 45 seconds and continue with play
+  wait_for: timeout=45
+  delegate_to: localhost
+
 - name: "Create AMI with new version"
   ec2_ami:
     instance_id: "{{instance_id}}"
